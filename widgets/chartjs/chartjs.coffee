@@ -4,6 +4,7 @@ class Dashing.Chartjs extends Dashing.Widget
     super
     @id = @get("id")
     @type = @get("type")
+    @header = @get("header")
     @labels = @get("labels") && @get("labels").split(",")
     @datasets = @get("datasets") && @get("datasets").split(",")
     @colorNames = @get("colornames") && @get("colornames").split(",")
@@ -13,7 +14,7 @@ class Dashing.Chartjs extends Dashing.Widget
       when 'pie', 'doughnut', 'polarArea'
         @circularChart @id, type: @type, labels: @labels, colors: @colorNames, datasets: @datasets
       when 'line', 'bar', 'radar'
-        @linearChart @id, type: @type, labels: @labels, colors: @colorNames, datasets: @datasets
+        @linearChart @id, type: @type, header: @header, labels: @labels, colors: @colorNames, datasets: @datasets
       else
         return
 
@@ -21,8 +22,8 @@ class Dashing.Chartjs extends Dashing.Widget
     data = @merge labels: labels, datasets: [@merge data: datasets, @colors(colors)]
     new Chart(document.getElementById(id), { type: type, data: data }, options)
 
-  linearChart: (id, { type, labels, colors, datasets, options={} }) ->
-    data = @merge labels: labels, datasets: [@merge(@colors(colors), data: datasets)]
+  linearChart: (id, { type, labels, header, colors, datasets, options={} }) ->
+    data = @merge labels: labels, datasets: [@merge(@colors(colors), label: header, data: datasets)]
     new Chart(document.getElementById(id), { type: type, data: data }, options)
 
   merge: (xs...) =>
