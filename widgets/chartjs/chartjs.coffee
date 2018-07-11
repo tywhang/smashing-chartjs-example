@@ -51,15 +51,6 @@ class Dashing.Chartjs extends Dashing.Widget
     pointHoverBackgroundColor: colorNames.map (colorName) => @pointHoverBackgroundColor(colorName)
     pointHoverBorderColor: colorNames.map (colorName) => @pointHoverBorderColor(colorName)
 
-  color: (colorName) ->
-    backgroundColor: @backgroundColor(colorName)
-    borderColor: @borderColor(colorName)
-    borderWidth: 1
-    pointBackgroundColor: @pointBackgroundColor(colorName)
-    pointBorderColor: @pointBorderColor(colorName)
-    pointHoverBackgroundColor: @pointHoverBackgroundColor()
-    pointHoverBorderColor: @pointBackgroundColor(colorName)
-
   backgroundColor: (colorName) -> "rgba(#{ @colorCode()[colorName] }, 0.2)"
   borderColor: (colorName) -> "rgba(#{ @colorCode()[colorName] }, 1)"
   pointBackgroundColor: (colorName) -> "rgba(#{ @colorCode()[colorName] }, 1)"
