@@ -11,10 +11,19 @@ class Dashing.Chartjs extends Dashing.Widget
 
   ready: ->
     switch @type
-      when 'pie', 'doughnut', 'polarArea'
-        @circularChart @id, type: @type, labels: @labels, colors: @colorNames, datasets: @datasets
-      when 'line', 'bar', 'radar'
-        @linearChart @id, type: @type, header: @header, labels: @labels, colors: @colorNames, datasets: @datasets
+      when "pie", "doughnut", "polarArea"
+        @circularChart @id,
+          type: @type,
+          labels: @labels,
+          colors: @colorNames,
+          datasets: @datasets
+      when "line", "bar", "horizontalBar", "radar"
+        @linearChart @id,
+          type: @type,
+          header: @header,
+          labels: @labels,
+          colors: @colorNames,
+          datasets: @datasets,
       else
         return
 
