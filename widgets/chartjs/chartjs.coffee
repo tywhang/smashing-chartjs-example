@@ -6,6 +6,7 @@ class Dashing.Chartjs extends Dashing.Widget
     @type = @get("type")
     @header = @get("header")
     @labels = @get("labels") && @get("labels").split(",")
+    @options = @get("options") || {}
 
     if @type == "scatter"
       @datasets = @get("datasets")
@@ -21,22 +22,26 @@ class Dashing.Chartjs extends Dashing.Widget
           type: @type,
           labels: @labels,
           colors: @colorNames,
-          datasets: @datasets
+          datasets: @datasets,
+          options: @options
+
       when "line", "bar", "horizontalBar", "radar", "scatter"
         @linearChart @id,
           type: @type,
           header: @header,
           labels: @labels,
           colors: @colorNames,
-          datasets: @datasets
+          datasets: @datasets,
+          options: @options
+
       else
         return
 
-  circularChart: (id, { type, labels, colors, datasets, options={} }) ->
+  circularChart: (id, { type, labels, colors, datasets, options }) ->
     data = @merge labels: labels, datasets: [@merge data: datasets, @colors(colors)]
     new Chart(document.getElementById(id), { type: type, data: data }, options)
 
-  linearChart: (id, { type, labels, header, colors, datasets, options={} }) ->
+  linearChart: (id, { type, labels, header, colors, datasets, options }) ->
     data = @merge labels: labels, datasets: [@merge(@colors(colors), label: header, data: datasets)]
     new Chart(document.getElementById(id), { type: type, data: data }, options)
 
