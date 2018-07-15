@@ -52,15 +52,26 @@ class Dashing.Chartjs extends Dashing.Widget
   tap: (o, fn) -> fn(o); o
 
   colorCode: ->
+    aqua: "0, 255, 255"
+    black: "0, 0, 0"
     blue: "151, 187, 205"
     cyan:  "0, 255, 255"
     darkgray: "77, 83, 96"
-    gray: "148, 159, 177"
-    green: "70, 191, 189"
+    fuschia: "255, 0, 255"
+    gray: "128, 128, 128"
+    green: "0, 128, 0"
     lightgray: "220, 220, 220"
+    lime: "0, 255, 0"
+    maroon: "128, 0, 0"
     magenta: "255, 0, 255"
-    red: "247, 70, 74"
-    yellow: "253, 180, 92"
+    navy: "0, 0, 128"
+    olive: "128, 128, 0"
+    purple: "128, 0, 128"
+    red: "255, 0, 0"
+    silver: "192, 192, 192"
+    teal: "0, 128, 128"
+    white: "255, 255, 255"
+    yellow: "255, 255, 0"
 
   colors: (colorNames) ->
     backgroundColor: colorNames.map (colorName) => @backgroundColor(colorName)
