@@ -6,7 +6,12 @@ class Dashing.Chartjs extends Dashing.Widget
     @type = @get("type")
     @header = @get("header")
     @labels = @get("labels") && @get("labels").split(",")
-    @datasets = @get("datasets") && @get("datasets").split(",")
+
+    if @type == "scatter"
+      @datasets = @get("datasets")
+    else
+      @datasets = @get("datasets") && @get("datasets").split(",")
+
     @colorNames = @get("colornames") && @get("colornames").split(",")
 
   ready: ->
@@ -17,13 +22,13 @@ class Dashing.Chartjs extends Dashing.Widget
           labels: @labels,
           colors: @colorNames,
           datasets: @datasets
-      when "line", "bar", "horizontalBar", "radar"
+      when "line", "bar", "horizontalBar", "radar", "scatter"
         @linearChart @id,
           type: @type,
           header: @header,
           labels: @labels,
           colors: @colorNames,
-          datasets: @datasets,
+          datasets: @datasets
       else
         return
 
