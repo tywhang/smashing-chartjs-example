@@ -16,6 +16,19 @@ class Dashing.Chartjs extends Dashing.Widget
     @colorNames = @get("colornames") && @get("colornames").split(",")
 
   ready: ->
+    @draw()
+
+  onData: (data) ->
+    @type = data.type || @type
+    @header = data.header || @header
+    @labels = data.labels || @labels
+    @options = data.options || @options
+    @datasets = data.datasets || @datasets
+    @colorNames = data.colorNames || @colorNames
+
+    @draw()
+
+  draw: ->
     switch @type
       when "pie", "doughnut", "polarArea"
         @circularChart @id,
