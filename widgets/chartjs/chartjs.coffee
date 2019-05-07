@@ -52,11 +52,11 @@ class Dashing.Chartjs extends Dashing.Widget
 
   circularChart: (id, { type, labels, colors, datasets, options }) ->
     data = @merge labels: labels, datasets: [@merge data: datasets, @colors(colors)]
-    new Chart(document.getElementById(id), { type: type, data: data }, options)
+    new Chart(document.getElementById(id), { type: type, data: data, options: options})
 
   linearChart: (id, { type, labels, header, colors, datasets, options }) ->
     data = @merge labels: labels, datasets: [@merge(@colors(colors), label: header, data: datasets)]
-    new Chart(document.getElementById(id), { type: type, data: data }, options)
+    new Chart(document.getElementById(id), { type: type, data: data, options: options})
 
   merge: (xs...) =>
     if xs?.length > 0

@@ -4,6 +4,12 @@ SCHEDULER.every "2s" do |job|
   	header: "Calories Burned",
   	labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"],
   	colorNames: ["yellow", "yellow", "yellow", "yellow", "yellow"],
-  	datasets: [210, 339, 220, 494, 109]
+  	datasets: [210, 339, 220, 494, 109],
+        options: {
+          title: {
+            display: true,
+            text: 'Calories Burned Per Day'
+          }
+        }
   })
 end
